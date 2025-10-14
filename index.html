@@ -13,7 +13,7 @@
         
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -23,18 +23,17 @@
         
         .presentation {
             width: 100%;
-            max-width: 900px;
+            max-width: 1000px;
             background: white;
             border-radius: 15px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.4);
             overflow: hidden;
         }
         
         .slide {
             display: none;
             padding: 60px 50px;
-            min-height: 600px;
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 700px;
             animation: fadeIn 0.5s ease-in;
         }
         
@@ -45,32 +44,112 @@
         }
         
         @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Cover Slide */
+        .slide-cover {
+            background: linear-gradient(135deg, #ff4757 0%, #ee5a6f 50%, #2f3542 100%);
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .slide-cover::before {
+            content: '🔥';
+            position: absolute;
+            font-size: 300px;
+            opacity: 0.1;
+            top: -50px;
+            right: -50px;
+            z-index: 0;
+        }
+        
+        .slide-cover-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .cover-title {
+            font-size: 3.5em;
+            margin-bottom: 20px;
+            font-weight: bold;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.3);
+            letter-spacing: 3px;
+        }
+        
+        .cover-subtitle {
+            font-size: 1.8em;
+            margin-bottom: 40px;
+            opacity: 0.95;
+            font-weight: 300;
+        }
+        
+        .cover-author {
+            font-size: 1.3em;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+        
+        .cover-info {
+            margin-top: 60px;
+            padding-top: 40px;
+            border-top: 2px solid rgba(255,255,255,0.3);
+            font-size: 1.1em;
+        }
+        
+        .cover-info p {
+            margin: 10px 0;
+            opacity: 0.85;
+        }
+        
+        /* Content Slides */
+        .slide-content-normal {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+        
+        .slide-content-dark {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
         }
         
         .slide h1 {
-            color: #764ba2;
-            font-size: 2.5em;
-            margin-bottom: 20px;
+            color: #ff4757;
+            font-size: 2.8em;
+            margin-bottom: 30px;
             text-align: center;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+        }
+        
+        .slide-content-dark h1 {
+            color: #fff;
         }
         
         .slide h2 {
             color: #667eea;
-            font-size: 2em;
+            font-size: 2.2em;
             margin-bottom: 30px;
             text-align: center;
         }
         
+        .slide-content-dark h2 {
+            color: #ffeb3b;
+        }
+        
         .slide-content {
-            font-size: 1.1em;
+            font-size: 1.05em;
             line-height: 1.8;
             color: #333;
         }
         
+        .slide-content-dark .slide-content {
+            color: white;
+        }
+        
         .slide-content p {
-            margin-bottom: 20px;
+            margin-bottom: 18px;
         }
         
         .slide-content ul {
@@ -79,17 +158,70 @@
         }
         
         .slide-content li {
-            margin-bottom: 15px;
+            margin-bottom: 12px;
+            list-style-type: disc;
         }
         
         .quote {
-            background: rgba(102, 126, 234, 0.1);
+            background: rgba(102, 126, 234, 0.15);
             border-left: 5px solid #667eea;
             padding: 20px;
             margin: 20px 0;
             font-style: italic;
-            color: #555;
+            color: #444;
             border-radius: 5px;
+            font-size: 1.02em;
+        }
+        
+        .slide-content-dark .quote {
+            background: rgba(255,255,255,0.15);
+            border-left-color: #ffeb3b;
+            color: #fff;
+        }
+        
+        .image-container {
+            display: flex;
+            justify-content: center;
+            margin: 25px 0;
+        }
+        
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            max-height: 250px;
+        }
+        
+        .key-point {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 20px;
+            margin: 15px 0;
+            border-radius: 8px;
+            font-weight: 500;
+        }
+        
+        .slide-content-dark .key-point {
+            background: rgba(255,255,255,0.2);
+        }
+        
+        .comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .comparison-item {
+            background: rgba(255,255,255,0.9);
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #ff4757;
+        }
+        
+        .comparison-item strong {
+            color: #667eea;
         }
         
         .controls {
@@ -97,11 +229,11 @@
             justify-content: space-between;
             align-items: center;
             padding: 20px 50px;
-            background: #f5f7fa;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
         }
         
         button {
-            background: #667eea;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
             border: none;
             padding: 12px 30px;
@@ -109,18 +241,19 @@
             font-size: 1em;
             cursor: pointer;
             transition: all 0.3s ease;
+            font-weight: 600;
         }
         
         button:hover {
-            background: #764ba2;
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
         }
         
         button:disabled {
             background: #ccc;
             cursor: not-allowed;
             transform: none;
+            box-shadow: none;
         }
         
         .slide-counter {
@@ -129,107 +262,218 @@
             font-weight: bold;
         }
         
-        .intro-subtitle {
-            font-size: 1.3em;
-            color: #667eea;
-            text-align: center;
-            margin-top: 30px;
+        .section-header {
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            font-weight: bold;
+            font-size: 1.1em;
         }
         
-        .author {
-            text-align: center;
-            font-size: 1.1em;
-            color: #666;
-            margin-top: 20px;
+        .analysis-box {
+            background: linear-gradient(135deg, #fff9e6 0%, #ffe6cc 100%);
+            border: 2px solid #ff9800;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 8px;
+            color: #333;
         }
     </style>
 </head>
 <body>
     <div class="presentation">
-        <!-- Slide 1: Giriş -->
-        <div class="slide active">
-            <div>
-                <h1>🔥 Fahrenheit 451</h1>
-                <p class="intro-subtitle">Distopya: Sansür, Kontrol ve Birey</p>
-                <p class="author">Ray Bradbury</p>
-            </div>
-            <div class="slide-content" style="text-align: center;">
-                <p><strong>Sunum Amacı:</strong></p>
-                <p>Bu sunumda, Ray Bradbury'nin "Fahrenheit 451" adlı eserinin distopik dünyasını, sansür ve bireysellik temalarını inceleyeceğiz.</p>
-                <p style="margin-top: 40px; font-size: 0.95em; color: #666;">11. Sınıf Türk Dili ve Edebiyatı - Ütopya-Distopya Çalışması</p>
+        <!-- Slide 1: Cover Page -->
+        <div class="slide slide-cover active">
+            <div class="slide-cover-content">
+                <div class="cover-title">FAHRENHEIT 451</div>
+                <div class="cover-subtitle">Distopya: Sansür, Kontrol ve Birey</div>
+                <div class="cover-author">Ray Bradbury | 1953</div>
+                
+                <div class="image-container">
+                    <div style="background: rgba(255,255,255,0.1); padding: 30px; border-radius: 10px; backdrop-filter: blur(5px);">
+                        <svg width="150" height="150" viewBox="0 0 150 150" style="opacity: 0.9;">
+                            <rect x="30" y="20" width="90" height="110" fill="none" stroke="white" stroke-width="3"/>
+                            <line x1="50" y1="35" x2="100" y2="35" stroke="white" stroke-width="2"/>
+                            <line x1="50" y1="55" x2="100" y2="55" stroke="white" stroke-width="2"/>
+                            <line x1="50" y1="75" x2="100" y2="75" stroke="white" stroke-width="2"/>
+                            <line x1="50" y1="95" x2="100" y2="95" stroke="white" stroke-width="2"/>
+                            <circle cx="75" cy="75" r="40" fill="none" stroke="#ffeb3b" stroke-width="2" opacity="0.7"/>
+                            <text x="75" y="80" font-size="30" fill="#ffeb3b" text-anchor="middle" font-weight="bold">🔥</text>
+                        </svg>
+                    </div>
+                </div>
+                
+                <div class="cover-info">
+                    <p><strong>11. Sınıf Türk Dili ve Edebiyatı Dersi</strong></p>
+                    <p>Ütopya-Distopya Çalışması</p>
+                    <p style="margin-top: 20px; font-size: 0.95em;">2025-26 Eğitim Yılı | 1. Dönem</p>
+                </div>
             </div>
         </div>
 
-        <!-- Slide 2: Distopya Kavramı ve Eser Tanıtımı -->
-        <div class="slide">
+        <!-- Slide 2: Distopya Kavramı -->
+        <div class="slide slide-content-normal">
             <div>
-                <h2>Distopya Kavramı ve Fahrenheit 451</h2>
+                <h2>📚 Distopya Nedir?</h2>
                 <div class="slide-content">
-                    <p><strong>Distopya Nedir?</strong></p>
-                    <p>Distopya, ideal olmayan, karanlık, baskıcı ve kontrollü bir düzeni tasvir eden kurgu türüdür. Teknoloji, sansür ve bireyselliğin yok edildiği toplumları anlatır.</p>
+                    <div class="section-header">Kavramsal Tanım</div>
+                    <p>Distopya, <strong>ideal olmayan, karanlık, baskıcı ve kontrolü aşırı olan bir düzeni tasvir eden</strong> kurgu türüdür. Genellikle gelecekte geçen distopik toplumlar, insanların özgürlüğünün elinden alındığı, bireyselliğin ortadan kaldırıldığı, teknolojinin kontrol aracı olarak kullanıldığı dünyaları gösterir.</p>
                     
-                    <p style="margin-top: 30px;"><strong>Fahrenheit 451'de Distopya:</strong></p>
+                    <div class="section-header" style="margin-top: 25px;">Distopya Özellikleri</div>
                     <ul>
-                        <li>Kitapların yakılması (451°F kitabın tutuşma sıcaklığı)</li>
-                        <li>Düşünce özgürlüğünün ortadan kaldırılması</li>
-                        <li>Medya ve teknolojinin insanları kontrol etmesi</li>
-                        <li>Sorgulama ve eleştirel düşüncenin yasaklanması</li>
+                        <li><strong>Totaliter Yönetim:</strong> Devlet, bütün hayatı kontrol eder</li>
+                        <li><strong>Bilgi Kısıtlaması:</strong> Sansür ve propaganda yapılır</li>
+                        <li><strong>Gözetleme:</strong> İnsanlar her an izlenirler</li>
+                        <li><strong>Bireyselliğin Yok Edilmesi:</strong> Hepsi aynı davranış ve düşünce göstermek zorunda</li>
+                        <li><strong>Teknolojinin Kötüye Kullanımı:</strong> Teknoloji insanları kontrol etmek için kullanılır</li>
+                        <li><strong>Umut Eksikliği:</strong> Değişim için çıkış yolu yoktur</li>
                     </ul>
                 </div>
             </div>
         </div>
 
-        <!-- Slide 3: Önemli Pasajlar ve Analiz -->
-        <div class="slide">
+        <!-- Slide 3: Fahrenheit 451 ve Distopya -->
+        <div class="slide slide-content-dark">
             <div>
-                <h2>Montag'ın Uyanışı: Sorgulamaya Başlamak</h2>
+                <h2>🔥 Fahrenheit 451'de Distopya</h2>
                 <div class="slide-content">
-                    <p><strong>Pasaj 1 (Sayfa 60):</strong></p>
-                    <div class="quote">
-                        "Montag Tanrım, öyle doğru ki! diye düşündü. Alarm hep geceleri çalar. Asla gündüzleri değil! Sebep ateşin geceleri daha güzel görünmesi mi?"
+                    <div class="image-container">
+                        <svg width="120" height="120" viewBox="0 0 120 120" style="filter: drop-shadow(0 5px 15px rgba(0,0,0,0.3));">
+                            <circle cx="60" cy="60" r="55" fill="none" stroke="#ffeb3b" stroke-width="3"/>
+                            <path d="M 60 20 Q 75 40 70 60 Q 80 70 60 90 Q 40 70 50 60 Q 45 40 60 20" fill="#ff6b35" opacity="0.8"/>
+                            <circle cx="60" cy="60" r="8" fill="#fff9e6"/>
+                        </svg>
                     </div>
-                    <p><em>Analiz:</em> Montag burada işini sorgulamaya başlıyor. Sistemin neden gecelerinde çalıştığını merak etmesi, distopik toplumun gerçekliğini sorgulamaya başladığının işaretidir.</p>
                     
-                    <p style="margin-top: 20px;"><strong>Pasaj 2 (Sayfa 68):</strong></p>
-                    <div class="quote">
-                        "Neden bana daha önce söylemedin?" - "Unuttum." - "Dört gün olmuş!" - "Tamamen unutmuşum."
+                    <p style="text-align: center; font-size: 0.95em; margin-bottom: 25px;"><em>"Kitapların tutuşma sıcaklığı: 451°F (Fahrenheit)"</em></p>
+                    
+                    <div class="comparison">
+                        <div class="comparison-item">
+                            <strong>📖 Kitapların Yakılması</strong>
+                            <p>Tüm kitaplar yasak ve yangın söndürmek yerine yakılırlar. Kitaplar tehlikeli kabul edilir.</p>
+                        </div>
+                        <div class="comparison-item">
+                            <strong>🚫 Sansür Rejimi</strong>
+                            <p>Düşünce özgürlüğü tamamen ortadan kaldırılmıştır. Eleştirel düşünce yasaklanmıştır.</p>
+                        </div>
+                        <div class="comparison-item">
+                            <strong>📱 Teknoloji Kontrolü</strong>
+                            <p>TV ve medya, insanları uyuştururken aynı zamanda kontrol eder. Propaganda endüstrisi.</p>
+                        </div>
+                        <div class="comparison-item">
+                            <strong>👥 Bireysellik Yok</strong>
+                            <p>İnsanlar bireysel değil, toplumun parçası olarak kabul edilir. Farklılık tehlikeli sayılır.</p>
+                        </div>
                     </div>
-                    <p><em>Analiz:</em> Montag'ın karısı Mildred, Clarisse'in ölümünü unutmuştur. Bu, distopik dünyanın insanları nasıl körelttiğini ve teknoloji maruziyetinin zihni nasıl etkilediğini gösterir.</p>
                 </div>
             </div>
         </div>
 
-        <!-- Slide 4: Kitapların Değeri ve Sonuç -->
-        <div class="slide">
+        <!-- Slide 4: Montag'ın Uyanışı - Pasaj 1 -->
+        <div class="slide slide-content-normal">
             <div>
-                <h2>Kitapların Gücü ve Aydınlanma</h2>
+                <h1>🌅 Montag'ın Sorgulamaya Başlaması</h1>
                 <div class="slide-content">
-                    <p><strong>Pasaj 3 (Sayfa 72):</strong></p>
+                    <div class="section-header">Pasaj 1: Sistemin Tuhaf Yönlerini Fark Etmek (Sayfa 60, 2-5. satırlar)</div>
+                    
                     <div class="quote">
-                        "Sen orada değildin, görmedin... bir kadının yana bir evde kalmasına yol açtıklarına göre, kitaplarda bir şeyler olmalı... hayal edemeyeceğimiz bir şeyler; orada bir şeyler olmalı. İnsan bir hiç uğruna kalmaz."
+                        "Montag Tanrım, öyle doğru ki! diye düşündü. Alarm hep geceleri çalar. Asla gündüzleri değil! Sebep ateşin geceleri daha güzel görünmesi mi? Daha hoş bir manzara, daha iyi bir gösteri sunması mı?"
                     </div>
                     
-                    <p style="margin-top: 25px;"><strong>Sonuç ve Bugünkü Dünyamıza Yansıması:</strong></p>
+                    <div class="analysis-box">
+                        <strong>📊 Analiz ve Yorumlama:</strong>
+                        <p style="margin-top: 10px;">Bu pasajda Guy Montag, rutinleştirdiği işi ilk kez sorgulamaya başlıyor. Alarm saatlerinin neden sadece gecelerde çalındığını merak etmesi, sistemin neden gece işler yaptığını düşünmesi, onda ilk ciddi sorgulamayı başlatır.</p>
+                        <p><strong>Derin Anlam:</strong> Yangın söndürmek yerine kitap yakması, insanı "meslek" olarak kabul eden bir toplumun hasta olduğunun işaretidir. Montag bu tuhaf gerçekliği fark etmeye başlamıştır.</p>
+                        <p><strong>Bağlam:</strong> Bu soru, kitap boyu devam edecek olan Montag'ın aydınlanmasının başlangıcıdır. Sorgulanmayan hayatın yaşanmaya değer olmadığı felsefesiyle örtüşür.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 5: Montag'ın Uyanışı - Pasaj 2 -->
+        <div class="slide slide-content-normal">
+            <div>
+                <h1>😔 Mildred'in Unutkanlığı</h1>
+                <div class="slide-content">
+                    <div class="section-header">Pasaj 2: Ölümü Unutmak (Sayfa 68, 16-22. satırlar)</div>
+                    
+                    <div class="quote">
+                        "Emin değilsin!" "Hayır, eminim. Gayet eminim" "Neden bana daha önce söylemedin?" "Unuttum." "Dört gün olmuş!" "Tamamen unutmuşum."
+                    </div>
+                    
+                    <p><strong>Bağlam:</strong> Montag'ın, gecelerde tanıştığı ve çok etkilendiği genç kız <strong>Clarisse McClellan</strong>'ın otomobil kazasında öldüğünü öğrenmektedir. Fakat karısı Mildred, bu acı haberi 4 gün önceden almış olmasına rağmen tamamen unutmuştur!</p>
+                    
+                    <div class="analysis-box">
+                        <strong>🔍 Distopyanın Psikolojik Etkisi:</strong>
+                        <p style="margin-top: 10px;"><strong>Teknoloji Maruziyeti:</strong> Mildred, sürekli TV'nin başında oturmaktadır. Sanal dünyadaki heyecan ve dopamin, gerçek hayatı tamamıyla körletmiştir.</p>
+                        <p><strong>Duygusal Soykırım:</strong> Distopik toplumda insanlar, duygularını ve empatiyi kaybetmiştir. Birinin ölümü bile bir ayrıntı haline gelmiştir.</p>
+                        <p><strong>İnsanlık Kaybı:</strong> Clarisse'in ölümü Montag'ı derinden sarsmış iken, Mildred bunu tamamen unutabilmesi, distopya ile insanın beyninin ne kadar yıkıldığını gösterir.</p>
+                    </div>
+                    
+                    <p style="margin-top: 15px;"><strong>Montag'ın Tepkisi:</strong> Bu olay Montag'ı çok etkilemiş, karısına olan ilişkisini sorgulamaya başlamış ve sistemin gerçekliğini daha keskin görmüştür.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 6: Montag'ın Uyanışı - Pasaj 3 -->
+        <div class="slide slide-content-dark">
+            <div>
+                <h1>📖 Kitapların Gücü ve Aydınlanma</h1>
+                <div class="slide-content">
+                    <div class="section-header" style="background: rgba(255,255,255,0.2);">Pasaj 3: Kitaplar Hakkında Sorgulamak (Sayfa 72, 5-8. satırlar)</div>
+                    
+                    <div class="quote">
+                        "Sen orada değildin, görmedin," dedi Montag "bir kadının yana bir evde kalmasına yol açtıklarına göre, kitaplarda bir şeyler olmalı… hayal edemeyeceğimiz bir şeyler; orada bir şeyler olmalı. İnsan bir hiç uğruna kalmaz."
+                    </div>
+                    
+                    <div class="key-point" style="margin-top: 20px;">
+                        🔑 Tarihsel Olay: Montag ve Beatty, bir kadının evindeki kitapları yakmak üzere gelmiştir. Kadın kitaplarıyla birlikte evi yakmayı tercih eder.
+                    </div>
+                    
+                    <div class="analysis-box" style="background: rgba(255,255,255,0.15); border-color: #ffeb3b; color: white;">
+                        <strong>🌟 Derin Felsefi Anlam:</strong>
+                        <p style="margin-top: 10px;"><strong>Kitapların Değeri:</strong> Kitaplara yalnızca bilgi saklı değildir. İnsanın kimliği, değerleri, deneyimleri, düşünceleri vardır. Bir kişi kitapları için ölmeyi tercih ederse, o kitaplarda hayatın anlamı vardır.</p>
+                        <p><strong>Bireysellik ve Özgürlük:</strong> Bu an Montag'ın tamamen uyanmasıdır. Kitaplar, sistemin bastırmaya çalıştığı bireyselliğin, özgür düşüncenin, insanın ruhunun sembolüdür.</p>
+                        <p><strong>Sistem Dışı Düşünce:</strong> Montag artık sistemin sahte, boş olduğunu anlamıştır. Kitaplar ve insan ilişkileri gerçek hayattır.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 7: Sonuç -->
+        <div class="slide slide-content-normal">
+            <div>
+                <h2>💭 Sonuç ve Bugünün Dünyasına Yansıması</h2>
+                <div class="slide-content">
+                    <div class="section-header">Temel Çıkarımlar</div>
+                    
                     <ul>
-                        <li>Kitaplar bilgi, düşünce ve kimlik arayışının sembolü</li>
-                        <li>Sansür ve kontrol bireyselliği yok eder</li>
-                        <li>Sosyal medya ve algoritmalar modern distopyalar yaratabilir</li>
-                        <li>Eleştirel düşünce ve okuma özgürlüğü esastır</li>
+                        <li><strong>Okuma Özgürlüğü:</strong> Kitaplar ve okuma, insan zihninin gelişmesinin temel taşıdır. Sansür bireyi köreltir.</li>
+                        <li><strong>Teknoloji Bilinçliliği:</strong> Teknoloji kötü değildir ama yanlış kullanımı insanı kontrol eder ve köreltebilir.</li>
+                        <li><strong>Eleştirel Düşünce:</strong> Sorgulamayan, sorgulayamayan bir toplum, totaliter rejime açıktır.</li>
+                        <li><strong>Empati ve İnsanlık:</strong> İnsanlar arasındaki gerçek bağlantılar hayatın anlamıdır. Sanal hayat bunu yerine geçemez.</li>
                     </ul>
+                    
+                    <div class="key-point" style="margin-top: 30px;">
+                        ⚠️ Bugünün Dünyasında: Sosyal medya algoritmaları, taraflı haber kaynakları, sürekli ekran maruziyeti modern bir distopya yaratabilir. Bilinçliliğe ihtiyaç vardır!
+                    </div>
                 </div>
             </div>
         </div>
 
+        <!-- Controls -->
         <div class="controls">
             <button id="prevBtn" onclick="changeSlide(-1)">← Önceki</button>
-            <span class="slide-counter"><span id="currentSlide">1</span> / <span id="totalSlides">4</span></span>
+            <span class="slide-counter"><span id="currentSlide">1</span> / <span id="totalSlides">7</span></span>
             <button id="nextBtn" onclick="changeSlide(1)">Sonraki →</button>
         </div>
     </div>
 
     <script>
         let currentSlide = 1;
-        const totalSlides = 4;
+        const totalSlides = 7;
 
         function showSlide(n) {
             const slides = document.querySelectorAll('.slide');
@@ -250,7 +494,6 @@
             showSlide(currentSlide);
         }
 
-        // Keyboard navigation
         document.addEventListener('keydown', (e) => {
             if (e.key === 'ArrowLeft') changeSlide(-1);
             if (e.key === 'ArrowRight') changeSlide(1);
