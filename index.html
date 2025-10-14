@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fahrenheit 451 - Distopya Sunumu</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .presentation {
+            width: 100%;
+            max-width: 900px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        
+        .slide {
+            display: none;
+            padding: 60px 50px;
+            min-height: 600px;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            animation: fadeIn 0.5s ease-in;
+        }
+        
+        .slide.active {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .slide h1 {
+            color: #764ba2;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .slide h2 {
+            color: #667eea;
+            font-size: 2em;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        .slide-content {
+            font-size: 1.1em;
+            line-height: 1.8;
+            color: #333;
+        }
+        
+        .slide-content p {
+            margin-bottom: 20px;
+        }
+        
+        .slide-content ul {
+            margin-left: 30px;
+            margin-bottom: 15px;
+        }
+        
+        .slide-content li {
+            margin-bottom: 15px;
+        }
+        
+        .quote {
+            background: rgba(102, 126, 234, 0.1);
+            border-left: 5px solid #667eea;
+            padding: 20px;
+            margin: 20px 0;
+            font-style: italic;
+            color: #555;
+            border-radius: 5px;
+        }
+        
+        .controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            background: #f5f7fa;
+        }
+        
+        button {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 25px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        button:hover {
+            background: #764ba2;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .slide-counter {
+            font-size: 1.1em;
+            color: #667eea;
+            font-weight: bold;
+        }
+        
+        .intro-subtitle {
+            font-size: 1.3em;
+            color: #667eea;
+            text-align: center;
+            margin-top: 30px;
+        }
+        
+        .author {
+            text-align: center;
+            font-size: 1.1em;
+            color: #666;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="presentation">
+        <!-- Slide 1: Giriş -->
+        <div class="slide active">
+            <div>
+                <h1>🔥 Fahrenheit 451</h1>
+                <p class="intro-subtitle">Distopya: Sansür, Kontrol ve Birey</p>
+                <p class="author">Ray Bradbury</p>
+            </div>
+            <div class="slide-content" style="text-align: center;">
+                <p><strong>Sunum Amacı:</strong></p>
+                <p>Bu sunumda, Ray Bradbury'nin "Fahrenheit 451" adlı eserinin distopik dünyasını, sansür ve bireysellik temalarını inceleyeceğiz.</p>
+                <p style="margin-top: 40px; font-size: 0.95em; color: #666;">11. Sınıf Türk Dili ve Edebiyatı - Ütopya-Distopya Çalışması</p>
+            </div>
+        </div>
+
+        <!-- Slide 2: Distopya Kavramı ve Eser Tanıtımı -->
+        <div class="slide">
+            <div>
+                <h2>Distopya Kavramı ve Fahrenheit 451</h2>
+                <div class="slide-content">
+                    <p><strong>Distopya Nedir?</strong></p>
+                    <p>Distopya, ideal olmayan, karanlık, baskıcı ve kontrollü bir düzeni tasvir eden kurgu türüdür. Teknoloji, sansür ve bireyselliğin yok edildiği toplumları anlatır.</p>
+                    
+                    <p style="margin-top: 30px;"><strong>Fahrenheit 451'de Distopya:</strong></p>
+                    <ul>
+                        <li>Kitapların yakılması (451°F kitabın tutuşma sıcaklığı)</li>
+                        <li>Düşünce özgürlüğünün ortadan kaldırılması</li>
+                        <li>Medya ve teknolojinin insanları kontrol etmesi</li>
+                        <li>Sorgulama ve eleştirel düşüncenin yasaklanması</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 3: Önemli Pasajlar ve Analiz -->
+        <div class="slide">
+            <div>
+                <h2>Montag'ın Uyanışı: Sorgulamaya Başlamak</h2>
+                <div class="slide-content">
+                    <p><strong>Pasaj 1 (Sayfa 60):</strong></p>
+                    <div class="quote">
+                        "Montag Tanrım, öyle doğru ki! diye düşündü. Alarm hep geceleri çalar. Asla gündüzleri değil! Sebep ateşin geceleri daha güzel görünmesi mi?"
+                    </div>
+                    <p><em>Analiz:</em> Montag burada işini sorgulamaya başlıyor. Sistemin neden gecelerinde çalıştığını merak etmesi, distopik toplumun gerçekliğini sorgulamaya başladığının işaretidir.</p>
+                    
+                    <p style="margin-top: 20px;"><strong>Pasaj 2 (Sayfa 68):</strong></p>
+                    <div class="quote">
+                        "Neden bana daha önce söylemedin?" - "Unuttum." - "Dört gün olmuş!" - "Tamamen unutmuşum."
+                    </div>
+                    <p><em>Analiz:</em> Montag'ın karısı Mildred, Clarisse'in ölümünü unutmuştur. Bu, distopik dünyanın insanları nasıl körelttiğini ve teknoloji maruziyetinin zihni nasıl etkilediğini gösterir.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 4: Kitapların Değeri ve Sonuç -->
+        <div class="slide">
+            <div>
+                <h2>Kitapların Gücü ve Aydınlanma</h2>
+                <div class="slide-content">
+                    <p><strong>Pasaj 3 (Sayfa 72):</strong></p>
+                    <div class="quote">
+                        "Sen orada değildin, görmedin... bir kadının yana bir evde kalmasına yol açtıklarına göre, kitaplarda bir şeyler olmalı... hayal edemeyeceğimiz bir şeyler; orada bir şeyler olmalı. İnsan bir hiç uğruna kalmaz."
+                    </div>
+                    
+                    <p style="margin-top: 25px;"><strong>Sonuç ve Bugünkü Dünyamıza Yansıması:</strong></p>
+                    <ul>
+                        <li>Kitaplar bilgi, düşünce ve kimlik arayışının sembolü</li>
+                        <li>Sansür ve kontrol bireyselliği yok eder</li>
+                        <li>Sosyal medya ve algoritmalar modern distopyalar yaratabilir</li>
+                        <li>Eleştirel düşünce ve okuma özgürlüğü esastır</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="controls">
+            <button id="prevBtn" onclick="changeSlide(-1)">← Önceki</button>
+            <span class="slide-counter"><span id="currentSlide">1</span> / <span id="totalSlides">4</span></span>
+            <button id="nextBtn" onclick="changeSlide(1)">Sonraki →</button>
+        </div>
+    </div>
+
+    <script>
+        let currentSlide = 1;
+        const totalSlides = 4;
+
+        function showSlide(n) {
+            const slides = document.querySelectorAll('.slide');
+            
+            if (n > totalSlides) currentSlide = totalSlides;
+            if (n < 1) currentSlide = 1;
+            
+            slides.forEach(slide => slide.classList.remove('active'));
+            slides[currentSlide - 1].classList.add('active');
+            
+            document.getElementById('currentSlide').textContent = currentSlide;
+            document.getElementById('prevBtn').disabled = currentSlide === 1;
+            document.getElementById('nextBtn').disabled = currentSlide === totalSlides;
+        }
+
+        function changeSlide(n) {
+            currentSlide += n;
+            showSlide(currentSlide);
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') changeSlide(-1);
+            if (e.key === 'ArrowRight') changeSlide(1);
+        });
+
+        showSlide(currentSlide);
+    </script>
+</body>
+</html>
