@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Başlangıç Rehberi - Fahrenheit 451</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            color: #333;
+        }
+        
+        .container {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 800px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+        
+        h1 {
+            color: #667eea;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .welcome {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+        
+        h2 {
+            color: #764ba2;
+            margin: 30px 0 15px;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 10px;
+        }
+        
+        .shortcut-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .shortcut-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        
+        .shortcut-card kbd {
+            display: block;
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 10px;
+            border-radius: 5px;
+        }
+        
+        .feature-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .feature-list li {
+            padding: 10px;
+            margin: 10px 0;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+        
+        .feature-list li:before {
+            content: '✨ ';
+            margin-right: 10px;
+        }
+        
+        .start-btn {
+            display: block;
+            width: 100%;
+            padding: 20px;
+            margin-top: 30px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 10px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .start-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.5);
+        }
+        
+        .tips {
+            background: #fff3cd;
+            border: 2px solid #ffc107;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        
+        .tips strong {
+            color: #ff6b6b;
+        }
+        
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+            }
+            
+            h1 {
+                font-size: 1.5rem;
+            }
+            
+            .shortcut-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="welcome">📚</div>
+        <h1>Fahrenheit 451 - Başlangıç Rehberi</h1>
+        
+        <p style="text-align: center; font-size: 1.1rem; margin-bottom: 30px;">
+            Distopya ve Ütopya temalı interaktif sunumumuza hoş geldiniz!
+        </p>
+        
+        <h2>⌨️ Klavye Kısayolları</h2>
+        <div class="shortcut-grid">
+            <div class="shortcut-card">
+                <kbd>←</kbd>
+                <div>Önceki Slayt</div>
+            </div>
+            <div class="shortcut-card">
+                <kbd>→</kbd>
+                <div>Sonraki Slayt</div>
+            </div>
+            <div class="shortcut-card">
+                <kbd>F</kbd>
+                <div>Tam Ekran</div>
+            </div>
+            <div class="shortcut-card">
+                <kbd>?</kbd>
+                <div>Yardım Menüsü</div>
+            </div>
+        </div>
+        
+        <h2>✨ Özellikler</h2>
+        <ul class="feature-list">
+            <li><strong>8 Detaylı Slayt</strong> - Fahrenheit 451 ve distopya üzerine kapsamlı analiz</li>
+            <li><strong>Responsive Tasarım</strong> - Telefon, tablet ve bilgisayarda mükemmel görünüm</li>
+            <li><strong>Touch Desteği</strong> - Mobilde parmak hareketleriyle gezinme</li>
+            <li><strong>Animasyonlar</strong> - Yumuşak geçişler ve görsel efektler</li>
+            <li><strong>İlerleme Çubuğu</strong> - Sunumun neresinde olduğunuzu görün</li>
+            <li><strong>Erişilebilirlik</strong> - Ekran okuyucu ve klavye desteği</li>
+        </ul>
+        
+        <div class="tips">
+            <strong>💡 İpuçları:</strong>
+            <ul style="margin-top: 10px; padding-left: 20px;">
+                <li>Tam ekran modunda sunum yapmak için <kbd>F</kbd> tuşuna basın</li>
+                <li>Mobilde sağa-sola kaydırarak slaytlar arasında gezinin</li>
+                <li>Yardıma ihtiyacınız olursa <kbd>?</kbd> tuşuna basın</li>
+                <li>Sol üstteki <strong>?</strong> butonuna tıklayarak da yardım alabilirsiniz</li>
+            </ul>
+        </div>
+        
+        <h2>📖 Slayt İçeriği</h2>
+        <ol style="padding-left: 20px; line-height: 2;">
+            <li>Kapak Sayfası</li>
+            <li>Ütopya ve Distopya Nedir?</li>
+            <li>Fahrenheit 451'de Ütopya ve Distopya</li>
+            <li>Distopik ve Ütopik Eserler</li>
+            <li>Kitaptan Alıntılar</li>
+            <li>Bildirge Kitabı</li>
+            <li>Günümüzde Distopya ve Ütopya</li>
+            <li>Kaynakça</li>
+        </ol>
+        
+        <a href="index.html" class="start-btn">
+            🚀 Sunumu Başlat
+        </a>
+        
+        <p style="text-align: center; margin-top: 20px; color: #666;">
+            <small>11-F Grubu | Edebiyat Sunumu</small>
+        </p>
+    </div>
+</body>
+</html>

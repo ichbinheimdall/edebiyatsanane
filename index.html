@@ -3,503 +3,333 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fahrenheit 451 - Distopya Sunumu</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            padding: 20px;
-        }
-        
-        .presentation {
-            width: 100%;
-            max-width: 1000px;
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.4);
-            overflow: hidden;
-        }
-        
-        .slide {
-            display: none;
-            padding: 60px 50px;
-            min-height: 700px;
-            animation: fadeIn 0.5s ease-in;
-        }
-        
-        .slide.active {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        /* Cover Slide */
-        .slide-cover {
-            background: linear-gradient(135deg, #ff4757 0%, #ee5a6f 50%, #2f3542 100%);
-            color: white;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .slide-cover::before {
-            content: '🔥';
-            position: absolute;
-            font-size: 300px;
-            opacity: 0.1;
-            top: -50px;
-            right: -50px;
-            z-index: 0;
-        }
-        
-        .slide-cover-content {
-            position: relative;
-            z-index: 1;
-        }
-        
-        .cover-title {
-            font-size: 3.5em;
-            margin-bottom: 20px;
-            font-weight: bold;
-            text-shadow: 3px 3px 6px rgba(0,0,0,0.3);
-            letter-spacing: 3px;
-        }
-        
-        .cover-subtitle {
-            font-size: 1.8em;
-            margin-bottom: 40px;
-            opacity: 0.95;
-            font-weight: 300;
-        }
-        
-        .cover-author {
-            font-size: 1.3em;
-            margin-bottom: 30px;
-            opacity: 0.9;
-        }
-        
-        .cover-info {
-            margin-top: 60px;
-            padding-top: 40px;
-            border-top: 2px solid rgba(255,255,255,0.3);
-            font-size: 1.1em;
-        }
-        
-        .cover-info p {
-            margin: 10px 0;
-            opacity: 0.85;
-        }
-        
-        /* Content Slides */
-        .slide-content-normal {
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-        }
-        
-        .slide-content-dark {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-        }
-        
-        .slide h1 {
-            color: #ff4757;
-            font-size: 2.8em;
-            margin-bottom: 30px;
-            text-align: center;
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
-        }
-        
-        .slide-content-dark h1 {
-            color: #fff;
-        }
-        
-        .slide h2 {
-            color: #667eea;
-            font-size: 2.2em;
-            margin-bottom: 30px;
-            text-align: center;
-        }
-        
-        .slide-content-dark h2 {
-            color: #ffeb3b;
-        }
-        
-        .slide-content {
-            font-size: 1.05em;
-            line-height: 1.8;
-            color: #333;
-        }
-        
-        .slide-content-dark .slide-content {
-            color: white;
-        }
-        
-        .slide-content p {
-            margin-bottom: 18px;
-        }
-        
-        .slide-content ul {
-            margin-left: 30px;
-            margin-bottom: 15px;
-        }
-        
-        .slide-content li {
-            margin-bottom: 12px;
-            list-style-type: disc;
-        }
-        
-        .quote {
-            background: rgba(102, 126, 234, 0.15);
-            border-left: 5px solid #667eea;
-            padding: 20px;
-            margin: 20px 0;
-            font-style: italic;
-            color: #444;
-            border-radius: 5px;
-            font-size: 1.02em;
-        }
-        
-        .slide-content-dark .quote {
-            background: rgba(255,255,255,0.15);
-            border-left-color: #ffeb3b;
-            color: #fff;
-        }
-        
-        .image-container {
-            display: flex;
-            justify-content: center;
-            margin: 25px 0;
-        }
-        
-        .image-container img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-            max-height: 250px;
-        }
-        
-        .key-point {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 15px 20px;
-            margin: 15px 0;
-            border-radius: 8px;
-            font-weight: 500;
-        }
-        
-        .slide-content-dark .key-point {
-            background: rgba(255,255,255,0.2);
-        }
-        
-        .comparison {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-            margin: 20px 0;
-        }
-        
-        .comparison-item {
-            background: rgba(255,255,255,0.9);
-            padding: 15px;
-            border-radius: 8px;
-            border-left: 4px solid #ff4757;
-        }
-        
-        .comparison-item strong {
-            color: #667eea;
-        }
-        
-        .controls {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 50px;
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-        }
-        
-        button {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            border: none;
-            padding: 12px 30px;
-            border-radius: 25px;
-            font-size: 1em;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-weight: 600;
-        }
-        
-        button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
-        }
-        
-        button:disabled {
-            background: #ccc;
-            cursor: not-allowed;
-            transform: none;
-            box-shadow: none;
-        }
-        
-        .slide-counter {
-            font-size: 1.1em;
-            color: #667eea;
-            font-weight: bold;
-        }
-        
-        .section-header {
-            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 10px 15px;
-            border-radius: 5px;
-            margin-bottom: 15px;
-            font-weight: bold;
-            font-size: 1.1em;
-        }
-        
-        .analysis-box {
-            background: linear-gradient(135deg, #fff9e6 0%, #ffe6cc 100%);
-            border: 2px solid #ff9800;
-            padding: 15px;
-            margin: 15px 0;
-            border-radius: 8px;
-            color: #333;
-        }
-    </style>
+    <meta name="description" content="Fahrenheit 451 - Distopya ve Ütopya Sunumu">
+    <meta name="keywords" content="Fahrenheit 451, Distopya, Ütopya, Ray Bradbury, Edebiyat">
+    <meta name="author" content="11-F Grubu">
+    <title>Fahrenheit 451 - Distopya ve Ütopya Sunumu</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://images.unsplash.com">
+    <link rel="preconnect" href="https://upload.wikimedia.org">
 </head>
 <body>
-    <div class="presentation">
-        <!-- Slide 1: Cover Page -->
-        <div class="slide slide-cover active">
-            <div class="slide-cover-content">
-                <div class="cover-title">FAHRENHEIT 451</div>
-                <div class="cover-subtitle">Distopya: Sansür, Kontrol ve Birey</div>
-                <div class="cover-author">Ray Bradbury | 1953</div>
-                
-                <div class="image-container">
-                    <div style="background: rgba(255,255,255,0.1); padding: 30px; border-radius: 10px; backdrop-filter: blur(5px);">
-                        <svg width="150" height="150" viewBox="0 0 150 150" style="opacity: 0.9;">
-                            <rect x="30" y="20" width="90" height="110" fill="none" stroke="white" stroke-width="3"/>
-                            <line x1="50" y1="35" x2="100" y2="35" stroke="white" stroke-width="2"/>
-                            <line x1="50" y1="55" x2="100" y2="55" stroke="white" stroke-width="2"/>
-                            <line x1="50" y1="75" x2="100" y2="75" stroke="white" stroke-width="2"/>
-                            <line x1="50" y1="95" x2="100" y2="95" stroke="white" stroke-width="2"/>
-                            <circle cx="75" cy="75" r="40" fill="none" stroke="#ffeb3b" stroke-width="2" opacity="0.7"/>
-                            <text x="75" y="80" font-size="30" fill="#ffeb3b" text-anchor="middle" font-weight="bold">🔥</text>
-                        </svg>
-                    </div>
+    <main class="presentation-container" role="region" aria-label="Fahrenheit 451 sunumu">
+        <!-- Slide Navigation -->
+        <div class="slide-counter">
+            <span id="current-slide">1</span> / <span id="total-slides">8</span>
+        </div>
+
+        <!-- Slide 1: Title Slide -->
+    <div class="slide active" data-slide="1" role="group" aria-labelledby="slide-1-title" aria-hidden="false" tabindex="-1">
+            <div class="slide-content fade-in">
+        <h1 class="title" id="slide-1-title">FAHRENHEİT 451</h1>
+                <h2 class="subtitle-main">DİSTOPYA-ÜTOPYA SUNUMU</h2>
+                <div class="decorative-line"></div>
+                <div class="book-image-container">
+                    <img src="https://www.thepaintedporch.com/cdn/shop/products/71OFqSRFDgL_600x600_crop_center.jpg?v=1631044817" 
+                         alt="Fahrenheit 451 İlk Baskı Kapağı - Ray Bradbury" 
+                         class="book-cover"
+                         loading="eager">
                 </div>
-                
-                <div class="cover-info">
-                    <p><strong>11. Sınıf Türk Dili ve Edebiyatı Dersi</strong></p>
-                    <p>Ütopya-Distopya Çalışması</p>
-                    <p style="margin-top: 20px; font-size: 0.95em;">2025-26 Eğitim Yılı | 1. Dönem</p>
+                <p class="group-members">Grup Üyeleri: Elif Barış, Bora Ağalar, Umut Güden, Ela Elikesik, Ali Sadi Yener / 11-F</p>
+            </div>
+        </div>
+
+        <!-- Slide 2 -->
+    <div class="slide" data-slide="2" role="group" aria-labelledby="slide-2-title" aria-hidden="true" tabindex="-1">
+            <div class="slide-content">
+        <h2 class="slide-title" id="slide-2-title">Ütopya ve Distopya Nedir?</h2>
+                <div class="content-grid two-column">
+                    <div class="text-content utopia-section">
+                        <h3 class="section-heading">ÜTOPYA</h3>
+                        <div class="image-placeholder">
+                            <img src="https://m.media-amazon.com/images/M/MV5BYjEwZjI5YzAtMzlmNC00YzVkLTgzOTgtNGM0ZmIyZDU3M2ZjXkEyXkFqcGdeQWFybm8@._V1_QL75_UX500_CR0,26,500,281_.jpg" 
+                                 alt="Ütopya - İdeal Toplum Konsepti" 
+                                 loading="lazy">
+                        </div>
+                        <ul class="animated-list">
+                            <li>Ütopya ideal bir toplum düzenini ifade eder</li>
+                            <li>Adalet, eşitlik, barış ve özgürlük sağlanır</li>
+                            <li>Eğitim, bilim ve teknoloji toplum yararına kullanır</li>
+                            <li>Şiddet ve ayrımcılık yoktur</li>
+                            <li>Hem ideal yaşam hayali hem de toplumsal eleştiri aracı olarak kullanılır</li>
+                        </ul>
+                    </div>
+                    <div class="text-content dystopia-section">
+                        <h3 class="section-heading dystopia">DİSTOPYA</h3>
+                        <div class="image-placeholder">
+                            <img src="https://divinity.uchicago.edu/sites/default/files/2021-11/burning_books.jpeg" 
+                                 alt="Distopya - Baskıcı Toplum Konsepti" 
+                                 loading="lazy">
+                        </div>
+                        <ul class="animated-list">
+                            <li>Distopya baskıcı ve sorunlu bir toplum düzenini anlatır</li>
+                            <li>Özgürlükler kısıtlanmış ve denetim yaygındır</li>
+                            <li>İnsanlar düşünmekten ve sorgulamaktan alıkonulur</li>
+                            <li>Şiddet, adaletsizlik ve eşitsizlik ön plandadır</li>
+                            <li>Mevcut toplumun olumsuz yönlerini gösteren uyarıcı bir araçtır</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <!-- Slide 2: Distopya Kavramı -->
-        <div class="slide slide-content-normal">
-            <div>
-                <h2>📚 Distopya Nedir?</h2>
-                <div class="slide-content">
-                    <div class="section-header">Kavramsal Tanım</div>
-                    <p>Distopya, <strong>ideal olmayan, karanlık, baskıcı ve kontrolü aşırı olan bir düzeni tasvir eden</strong> kurgu türüdür. Genellikle gelecekte geçen distopik toplumlar, insanların özgürlüğünün elinden alındığı, bireyselliğin ortadan kaldırıldığı, teknolojinin kontrol aracı olarak kullanıldığı dünyaları gösterir.</p>
-                    
-                    <div class="section-header" style="margin-top: 25px;">Distopya Özellikleri</div>
-                    <ul>
-                        <li><strong>Totaliter Yönetim:</strong> Devlet, bütün hayatı kontrol eder</li>
-                        <li><strong>Bilgi Kısıtlaması:</strong> Sansür ve propaganda yapılır</li>
-                        <li><strong>Gözetleme:</strong> İnsanlar her an izlenirler</li>
-                        <li><strong>Bireyselliğin Yok Edilmesi:</strong> Hepsi aynı davranış ve düşünce göstermek zorunda</li>
-                        <li><strong>Teknolojinin Kötüye Kullanımı:</strong> Teknoloji insanları kontrol etmek için kullanılır</li>
-                        <li><strong>Umut Eksikliği:</strong> Değişim için çıkış yolu yoktur</li>
+        <!-- Slide 3 -->
+    <div class="slide" data-slide="3" role="group" aria-labelledby="slide-3-title" aria-hidden="true" tabindex="-1">
+            <div class="slide-content">
+        <h2 class="slide-title" id="slide-3-title">FAHRENHEİT 451</h2>
+                <div class="content-grid two-column">
+                    <div class="text-content">
+                        <h3 class="section-heading">ÜTOPYA</h3>
+                        <div class="image-placeholder">
+                            <img src="https://www.salon.com/app/uploads/2023/07/futuristic_city_1136403140.jpg" 
+                                 alt="Kitaplar - Bilgi ve Özgürlüğün Sembolü" 
+                                 loading="lazy">
+                        </div>
+                        <ul class="animated-list">
+                            <li><strong>Kitapların yakılması.</strong> Ütopyada bilgiye özgürce erişim olmalıdır, burada bu hak engelleniyor</li>
+                            <li><strong>İnsanların düşünmeyi bırakması.</strong> Ütopyada bireyler özgürce düşünür ve sorgular</li>
+                            <li><strong>Montag'ın uyanışı.</strong> Gerçek ütopyada insanlar farkındalık kazanır ve kendilerini geliştirir</li>
+                            <li><strong>Televizyon ve eğlenceyle kontrol.</strong> Ütopyada bireyler, sadece eğlenceye değil bilgiye ve sanata da değer verir</li>
+                        </ul>
+                    </div>
+                    <div class="text-content">
+                        <h3 class="section-heading dystopia">DİSTOPYA</h3>
+                        <div class="image-placeholder">
+                            <img src="https://miro.medium.com/v2/resize:fit:1400/1*pHF2bZtr0v3fXtWhhnHGkw.jpeg" 
+                                 alt="Kitap Yakma - Bilginin Yasaklanması" 
+                                 loading="lazy">
+                        </div>
+                        <ul class="animated-list">
+                            <li><strong>Kitapların yakılması.</strong> İnsanlar bilgiye erişemez ve düşünme özgürlüğü engellenir</li>
+                            <li><strong>İnsanların düşünmeyi bırakması.</strong> Bireyler sorgulamadan, sadece sistemin emrettiğini yapar</li>
+                            <li><strong>Montag'ın başlangıçtaki uysallığı.</strong> Sisteme boyun eğmek, distopyada normaldir</li>
+                            <li><strong>Televizyon ve eğlenceyle kontrol.</strong> İnsanlar düşünmek yerine sürekli eğlenceyle uyuşturulur</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 4 -->
+        <div class="slide" data-slide="4" role="group" aria-labelledby="slide-4-title" aria-hidden="true" tabindex="-1">
+            <div class="slide-content">
+                <h2 class="slide-title" id="slide-4-title">Distopik ve Ütopik Eserler</h2>
+                <div class="movies-grid">
+                    <div class="movie-card">
+                        <img src="http://www.impawards.com/2014/posters/giver.jpg" 
+                             alt="The Giver - Kontrol altındaki ideal görünen toplum" 
+                             loading="lazy">
+                        <h3>The Giver</h3>
+                        <p class="movie-caption">Kontrol altındaki ideal görünen toplum</p>
+                    </div>
+                    <div class="movie-card">
+                        <img src="http://www.impawards.com/2012/posters/hunger_games.jpg" 
+                             alt="The Hunger Games - Totaliter rejimde hayatta kalma ve isyan" 
+                             loading="lazy">
+                        <h3>The Hunger Games</h3>
+                        <p class="movie-caption">Totaliter rejimde hayatta kalma ve isyan</p>
+                    </div>
+                    <div class="movie-card">
+                        <img src="http://www.impawards.com/2008/posters/wall_e.jpg" 
+                             alt="Wall-E - Tüketim toplumu ve çevresel çöküş" 
+                             loading="lazy">
+                        <h3>Wall-E</h3>
+                        <p class="movie-caption">Tüketim toplumu ve çevresel çöküş</p>
+                    </div>
+                    <div class="movie-card">
+                        <img src="http://www.impawards.com/2009/posters/avatar.jpg" 
+                             alt="Avatar - Doğayla uyumlu ütopya ve sömürgecilik karşıtlığı" 
+                             loading="lazy">
+                        <h3>Avatar</h3>
+                        <p class="movie-caption">Doğayla uyumlu ütopya ve sömürgecilik karşıtlığı</p>
+                    </div>
+                    <div class="movie-card">
+                        <img src="http://www.impawards.com/2015/posters/tomorrowland.jpg" 
+                             alt="Tomorrowland - Bilimle kurulan umut dolu gelecek ütopyası" 
+                             loading="lazy">
+                        <h3>Tomorrowland</h3>
+                        <p class="movie-caption">Bilimle kurulan umut dolu gelecek ütopyası</p>
+                    </div>
+                    <div class="movie-card">
+                        <img src="http://www.impawards.com/1998/posters/pleasantville_ver1.jpg" 
+                             alt="Pleasantville - Kusursuzluk illüzyonu ve bireysel özgürlük" 
+                             loading="lazy">
+                        <h3>Pleasantville</h3>
+                        <p class="movie-caption">Kusursuzluk illüzyonu ve bireysel özgürlük</p>
+                    </div>
+            </div>
+            </div>
+        </div>
+
+        <!-- Slide 5: Book Quotes -->
+    <div class="slide" data-slide="5" role="group" aria-labelledby="slide-5-title" aria-hidden="true" tabindex="-1">
+            <div class="slide-content">
+        <h2 class="slide-title" id="slide-5-title">FAHRENHEİT 451 KİTAP BÖLÜMLERİ</h2>
+                <div class="quotes-container">
+                    <div class="quote-card">
+                        <div class="quote-icon">📖</div>
+                        <blockquote>
+                            "Montag Tanrım, öyle doğru ki! diye düşündü. Alarm hep geceleri çalar. Asla gündüzleri değil! Sebep ateşin geceleri daha güzel görünmesi mi? Daha hoş bir manzara, daha iyi bir gösteri sunması mı?"
+                        </blockquote>
+                        <cite>— Fahrenheit 451, Sayfa 60, 2-5. satırlar arası</cite>
+                    </div>
+                    <div class="quote-card">
+                        <div class="quote-icon">💬</div>
+                        <blockquote>
+                            "Emin değilsin!"<br>
+                            "Hayır, eminim. Gayet eminim"<br>
+                            "Neden bana daha önce söylemedin?"<br>
+                            "Unuttum."<br>
+                            "Dört gün olmuş!"<br>
+                            "Tamamen unutmuşum."
+                        </blockquote>
+                        <cite>— Fahrenheit 451, Sayfa 68, 16-22. satırlar arası</cite>
+                    </div>
+                    <div class="quote-card">
+                        <div class="quote-icon">🔥</div>
+                        <blockquote>
+                            "Sen orada değildin, görmedin," dedi Montag "bir kadının yanıp bir evde kalmasına yol açtıklarına göre, kitaplarda bir şeyler olmalı… hayal edemeyeceğimiz bir şeyler; orada bir şeyler olmalı. İnsan bir hiç uğruna kalmaz."
+                        </blockquote>
+                        <cite>— Fahrenheit 451, Sayfa 72, 5-8. satırlar arası</cite>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 6: Bildirge -->
+    <div class="slide" data-slide="6" role="group" aria-labelledby="slide-6-title" aria-hidden="true" tabindex="-1">
+            <div class="slide-content">
+        <h2 class="slide-title" id="slide-6-title">BİLDİRGE KİTABINDA DİSTOPYA</h2>
+                <div class="content-with-image">
+                    <div class="image-placeholder large">
+                        <img src="https://covers.storytel.com/jpg-640/9786257314077.f8144d3c-8927-4452-b778-6fd00ab4c3bb?optimize=high&quality=70&width=600" 
+                             alt="Bildirge - Gemma Malley" 
+                             loading="lazy">
+                    </div>
+                    <div class="question-box">
+                        <h3>📚 Bildirge kitabı neyi anlatmaktadır?</h3>
+                    </div>
+                    <div class="question-box">
+                        <h3>🧩 Nasıl distopik bir kurgu vardır?</h3>
+                    </div>
+                    <div class="question-box">
+                        <h3>🔗 Fahrenheit 451'le ortak bağlantıları nelerdir?</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 7: Modern Times -->
+    <div class="slide" data-slide="7" role="group" aria-labelledby="slide-7-title" aria-hidden="true" tabindex="-1">
+            <div class="slide-content">
+        <h2 class="slide-title" id="slide-7-title">GÜNÜMÜZDE DİSTOPYA VE ÜTOPYA</h2>
+                <div class="modern-comparison">
+                    <div class="modern-card positive">
+                        <h3>✅ "Daha Fazla Yeşil ve Mavi Bayrak" Projesi</h3>
+                        <div class="stats">
+                            <div class="stat-item">
+                                <div class="stat-icon">🏖️</div>
+                                <div class="stat-number">567</div>
+                                <div class="stat-label">Mavi Bayraklı Plaj</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-icon">🌳</div>
+                                <div class="stat-number">7</div>
+                                <div class="stat-label">Yeşil Bayraklı Park</div>
+                            </div>
+                        </div>
+                        <p class="goal">Amaç bu sayıları daha da artırıp hali hazırda turizm cenneti olan ülkemizi daha da geliştirmektir.</p>
+                        <img src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=600&h=400&fit=crop&q=80" 
+                             alt="Güzel Plaj - Turizm" 
+                             loading="lazy">
+                    </div>
+                    <div class="modern-card negative">
+                        <h3>⚠️ Kontrolsüz Kentleşme ve Ormanlarımızın Kaybı</h3>
+                        <div class="stats">
+                            <div class="stat-item danger">
+                                <div class="stat-icon">🏗️</div>
+                                <div class="stat-number">%348</div>
+                                <div class="stat-label">İstanbul kentleşme artışı (1998'den beri)</div>
+                            </div>
+                            <div class="stat-item danger">
+                                <div class="stat-icon">🌲</div>
+                                <div class="stat-number">2.35B m²</div>
+                                <div class="stat-label">Betonlaşan Alan</div>
+                            </div>
+                        </div>
+                        <p class="warning">Ormanlık alan: 23.245.000 hektardan 20.000.000 hektara gerilemiştir (resmi kaynaklara göre)</p>
+                        <img src="https://images.unsplash.com/photo-1611273426858-450d8e3c9fce?w=600&h=400&fit=crop&q=80" 
+                             alt="Kentsel Gelişim ve Betonlaşma" 
+                             loading="lazy">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 8: Sources -->
+    <div class="slide" data-slide="8" role="group" aria-labelledby="slide-8-title" aria-hidden="true" tabindex="-1">
+            <div class="slide-content">
+        <h2 class="slide-title" id="slide-8-title">KAYNAKÇA</h2>
+                <div class="sources-content">
+                    <div class="source-icon">📚</div>
+                    <ul class="sources-list">
+                        <li><a href="https://www.sparknotes.com/lit/the-hunger-games/themes/" target="_blank">https://www.sparknotes.com/lit/the-hunger-games/themes/</a></li>
+                        <li><a href="https://fangirlunguncesi.blogspot.com/2015/02/bildirge-gemma-malley-kitap-yorumum.html" target="_blank">https://fangirlunguncesi.blogspot.com/2015/02/bildirge-gemma-malley-kitap-yorumum.html</a></li>
+                        <li><a href="https://dergipark.org.tr/tr/download/article-file/4653122" target="_blank">https://dergipark.org.tr/tr/download/article-file/4653122</a></li>
+                        <li><a href="https://www.gazetesanat.com/edebiyat/anlatilan-senin-hikayen-utopya-ve-distopya" target="_blank">https://www.gazetesanat.com/edebiyat/anlatilan-senin-hikayen-utopya-ve-distopya</a></li>
+                        <li><strong>Görseller:</strong> Unsplash & Wikimedia Commons (temsili ve konu ile uyumlu görseller kullanılmıştır)</li>
                     </ul>
-                </div>
-            </div>
-        </div>
-
-        <!-- Slide 3: Fahrenheit 451 ve Distopya -->
-        <div class="slide slide-content-dark">
-            <div>
-                <h2>🔥 Fahrenheit 451'de Distopya</h2>
-                <div class="slide-content">
-                    <div class="image-container">
-                        <svg width="120" height="120" viewBox="0 0 120 120" style="filter: drop-shadow(0 5px 15px rgba(0,0,0,0.3));">
-                            <circle cx="60" cy="60" r="55" fill="none" stroke="#ffeb3b" stroke-width="3"/>
-                            <path d="M 60 20 Q 75 40 70 60 Q 80 70 60 90 Q 40 70 50 60 Q 45 40 60 20" fill="#ff6b35" opacity="0.8"/>
-                            <circle cx="60" cy="60" r="8" fill="#fff9e6"/>
-                        </svg>
-                    </div>
-                    
-                    <p style="text-align: center; font-size: 0.95em; margin-bottom: 25px;"><em>"Kitapların tutuşma sıcaklığı: 451°F (Fahrenheit)"</em></p>
-                    
-                    <div class="comparison">
-                        <div class="comparison-item">
-                            <strong>📖 Kitapların Yakılması</strong>
-                            <p>Tüm kitaplar yasak ve yangın söndürmek yerine yakılırlar. Kitaplar tehlikeli kabul edilir.</p>
-                        </div>
-                        <div class="comparison-item">
-                            <strong>🚫 Sansür Rejimi</strong>
-                            <p>Düşünce özgürlüğü tamamen ortadan kaldırılmıştır. Eleştirel düşünce yasaklanmıştır.</p>
-                        </div>
-                        <div class="comparison-item">
-                            <strong>📱 Teknoloji Kontrolü</strong>
-                            <p>TV ve medya, insanları uyuştururken aynı zamanda kontrol eder. Propaganda endüstrisi.</p>
-                        </div>
-                        <div class="comparison-item">
-                            <strong>👥 Bireysellik Yok</strong>
-                            <p>İnsanlar bireysel değil, toplumun parçası olarak kabul edilir. Farklılık tehlikeli sayılır.</p>
-                        </div>
+                    <div class="thank-you">
+                        <h3>Teşekkürler!</h3>
+                        <p>Dinlediğiniz için teşekkür ederiz.</p>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Slide 4: Montag'ın Uyanışı - Pasaj 1 -->
-        <div class="slide slide-content-normal">
-            <div>
-                <h1>🌅 Montag'ın Sorgulamaya Başlaması</h1>
-                <div class="slide-content">
-                    <div class="section-header">Pasaj 1: Sistemin Tuhaf Yönlerini Fark Etmek (Sayfa 60, 2-5. satırlar)</div>
-                    
-                    <div class="quote">
-                        "Montag Tanrım, öyle doğru ki! diye düşündü. Alarm hep geceleri çalar. Asla gündüzleri değil! Sebep ateşin geceleri daha güzel görünmesi mi? Daha hoş bir manzara, daha iyi bir gösteri sunması mı?"
-                    </div>
-                    
-                    <div class="analysis-box">
-                        <strong>📊 Analiz ve Yorumlama:</strong>
-                        <p style="margin-top: 10px;">Bu pasajda Guy Montag, rutinleştirdiği işi ilk kez sorgulamaya başlıyor. Alarm saatlerinin neden sadece gecelerde çalındığını merak etmesi, sistemin neden gece işler yaptığını düşünmesi, onda ilk ciddi sorgulamayı başlatır.</p>
-                        <p><strong>Derin Anlam:</strong> Yangın söndürmek yerine kitap yakması, insanı "meslek" olarak kabul eden bir toplumun hasta olduğunun işaretidir. Montag bu tuhaf gerçekliği fark etmeye başlamıştır.</p>
-                        <p><strong>Bağlam:</strong> Bu soru, kitap boyu devam edecek olan Montag'ın aydınlanmasının başlangıcıdır. Sorgulanmayan hayatın yaşanmaya değer olmadığı felsefesiyle örtüşür.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Slide 5: Montag'ın Uyanışı - Pasaj 2 -->
-        <div class="slide slide-content-normal">
-            <div>
-                <h1>😔 Mildred'in Unutkanlığı</h1>
-                <div class="slide-content">
-                    <div class="section-header">Pasaj 2: Ölümü Unutmak (Sayfa 68, 16-22. satırlar)</div>
-                    
-                    <div class="quote">
-                        "Emin değilsin!" "Hayır, eminim. Gayet eminim" "Neden bana daha önce söylemedin?" "Unuttum." "Dört gün olmuş!" "Tamamen unutmuşum."
-                    </div>
-                    
-                    <p><strong>Bağlam:</strong> Montag'ın, gecelerde tanıştığı ve çok etkilendiği genç kız <strong>Clarisse McClellan</strong>'ın otomobil kazasında öldüğünü öğrenmektedir. Fakat karısı Mildred, bu acı haberi 4 gün önceden almış olmasına rağmen tamamen unutmuştur!</p>
-                    
-                    <div class="analysis-box">
-                        <strong>🔍 Distopyanın Psikolojik Etkisi:</strong>
-                        <p style="margin-top: 10px;"><strong>Teknoloji Maruziyeti:</strong> Mildred, sürekli TV'nin başında oturmaktadır. Sanal dünyadaki heyecan ve dopamin, gerçek hayatı tamamıyla körletmiştir.</p>
-                        <p><strong>Duygusal Soykırım:</strong> Distopik toplumda insanlar, duygularını ve empatiyi kaybetmiştir. Birinin ölümü bile bir ayrıntı haline gelmiştir.</p>
-                        <p><strong>İnsanlık Kaybı:</strong> Clarisse'in ölümü Montag'ı derinden sarsmış iken, Mildred bunu tamamen unutabilmesi, distopya ile insanın beyninin ne kadar yıkıldığını gösterir.</p>
-                    </div>
-                    
-                    <p style="margin-top: 15px;"><strong>Montag'ın Tepkisi:</strong> Bu olay Montag'ı çok etkilemiş, karısına olan ilişkisini sorgulamaya başlamış ve sistemin gerçekliğini daha keskin görmüştür.</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Slide 6: Montag'ın Uyanışı - Pasaj 3 -->
-        <div class="slide slide-content-dark">
-            <div>
-                <h1>📖 Kitapların Gücü ve Aydınlanma</h1>
-                <div class="slide-content">
-                    <div class="section-header" style="background: rgba(255,255,255,0.2);">Pasaj 3: Kitaplar Hakkında Sorgulamak (Sayfa 72, 5-8. satırlar)</div>
-                    
-                    <div class="quote">
-                        "Sen orada değildin, görmedin," dedi Montag "bir kadının yana bir evde kalmasına yol açtıklarına göre, kitaplarda bir şeyler olmalı… hayal edemeyeceğimiz bir şeyler; orada bir şeyler olmalı. İnsan bir hiç uğruna kalmaz."
-                    </div>
-                    
-                    <div class="key-point" style="margin-top: 20px;">
-                        🔑 Tarihsel Olay: Montag ve Beatty, bir kadının evindeki kitapları yakmak üzere gelmiştir. Kadın kitaplarıyla birlikte evi yakmayı tercih eder.
-                    </div>
-                    
-                    <div class="analysis-box" style="background: rgba(255,255,255,0.15); border-color: #ffeb3b; color: white;">
-                        <strong>🌟 Derin Felsefi Anlam:</strong>
-                        <p style="margin-top: 10px;"><strong>Kitapların Değeri:</strong> Kitaplara yalnızca bilgi saklı değildir. İnsanın kimliği, değerleri, deneyimleri, düşünceleri vardır. Bir kişi kitapları için ölmeyi tercih ederse, o kitaplarda hayatın anlamı vardır.</p>
-                        <p><strong>Bireysellik ve Özgürlük:</strong> Bu an Montag'ın tamamen uyanmasıdır. Kitaplar, sistemin bastırmaya çalıştığı bireyselliğin, özgür düşüncenin, insanın ruhunun sembolüdür.</p>
-                        <p><strong>Sistem Dışı Düşünce:</strong> Montag artık sistemin sahte, boş olduğunu anlamıştır. Kitaplar ve insan ilişkileri gerçek hayattır.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Slide 7: Sonuç -->
-        <div class="slide slide-content-normal">
-            <div>
-                <h2>💭 Sonuç ve Bugünün Dünyasına Yansıması</h2>
-                <div class="slide-content">
-                    <div class="section-header">Temel Çıkarımlar</div>
-                    
-                    <ul>
-                        <li><strong>Okuma Özgürlüğü:</strong> Kitaplar ve okuma, insan zihninin gelişmesinin temel taşıdır. Sansür bireyi köreltir.</li>
-                        <li><strong>Teknoloji Bilinçliliği:</strong> Teknoloji kötü değildir ama yanlış kullanımı insanı kontrol eder ve köreltebilir.</li>
-                        <li><strong>Eleştirel Düşünce:</strong> Sorgulamayan, sorgulayamayan bir toplum, totaliter rejime açıktır.</li>
-                        <li><strong>Empati ve İnsanlık:</strong> İnsanlar arasındaki gerçek bağlantılar hayatın anlamıdır. Sanal hayat bunu yerine geçemez.</li>
-                    </ul>
-                    
-                    <div class="key-point" style="margin-top: 30px;">
-                        ⚠️ Bugünün Dünyasında: Sosyal medya algoritmaları, taraflı haber kaynakları, sürekli ekran maruziyeti modern bir distopya yaratabilir. Bilinçliliğe ihtiyaç vardır!
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Controls -->
+        <!-- Navigation Controls -->
         <div class="controls">
-            <button id="prevBtn" onclick="changeSlide(-1)">← Önceki</button>
-            <span class="slide-counter"><span id="currentSlide">1</span> / <span id="totalSlides">7</span></span>
-            <button id="nextBtn" onclick="changeSlide(1)">Sonraki →</button>
+            <button id="prev-btn" class="nav-btn">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+            </button>
+            <button id="next-btn" class="nav-btn">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+            </button>
         </div>
-    </div>
 
-    <script>
-        let currentSlide = 1;
-        const totalSlides = 7;
+        <!-- Progress Bar -->
+        <div class="progress-bar">
+            <div class="progress-fill" id="progress-fill"></div>
+        </div>
 
-        function showSlide(n) {
-            const slides = document.querySelectorAll('.slide');
-            
-            if (n > totalSlides) currentSlide = totalSlides;
-            if (n < 1) currentSlide = 1;
-            
-            slides.forEach(slide => slide.classList.remove('active'));
-            slides[currentSlide - 1].classList.add('active');
-            
-            document.getElementById('currentSlide').textContent = currentSlide;
-            document.getElementById('prevBtn').disabled = currentSlide === 1;
-            document.getElementById('nextBtn').disabled = currentSlide === totalSlides;
-        }
+        <!-- Help Overlay -->
+        <div class="help-overlay" id="help-overlay">
+            <div class="help-content">
+                <h3>⌨️ Klavye Kısayolları</h3>
+                <ul class="keyboard-shortcuts">
+                    <li><kbd>←</kbd> Önceki slayt</li>
+                    <li><kbd>→</kbd> Sonraki slayt</li>
+                    <li><kbd>F</kbd> Tam ekran</li>
+                    <li><kbd>?</kbd> Bu yardım menüsü</li>
+                    <li><kbd>Esc</kbd> Yardım menüsünü kapat</li>
+                </ul>
+                <button class="close-help" id="close-help">Kapat</button>
+            </div>
+        </div>
 
-        function changeSlide(n) {
-            currentSlide += n;
-            showSlide(currentSlide);
-        }
+        <!-- Help Button -->
+        <button class="help-btn" id="help-btn" aria-label="Yardım menüsünü aç">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                <path d="M12 16V16.01M12 8C10.34 8 9 9.34 9 11" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+        </button>
+    </main>
 
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'ArrowLeft') changeSlide(-1);
-            if (e.key === 'ArrowRight') changeSlide(1);
-        });
-
-        showSlide(currentSlide);
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
